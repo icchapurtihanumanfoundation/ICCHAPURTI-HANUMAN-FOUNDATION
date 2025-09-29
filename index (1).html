@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icchapurti Hanuman Foundation</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #fff8f0; color: #333; }
+    header { background: #ff6600; color: white; padding: 10px; text-align: center; }
+    header img { max-height: 100px; }
+    nav { background: #cc5200; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    .hero { background: url('photo1.jpg') center/cover no-repeat; color: white; padding: 100px 20px; text-align: center; }
+    .hero h1 { font-size: 2.2rem; background: rgba(0,0,0,0.6); display: inline-block; padding: 10px 20px; border-radius: 8px; }
+
+    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+    section h2 { color: #cc5200; margin-bottom: 20px; text-align: center; }
+
+    footer { background: #cc5200; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+
+    /* Slideshow */
+    .slideshow-container { position: relative; max-width: 1000px; margin: auto; }
+    .slides { display: none; }
+    .slides img { width: 100%; border-radius: 10px; }
+    .prev, .next {
+      cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px;
+      margin-top: -22px; color: white; font-weight: bold; font-size: 18px;
+      transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none;
+    }
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+    .dot-container { text-align: center; margin-top: 10px; }
+    .dot {
+      cursor: pointer; height: 15px; width: 15px; margin: 0 2px;
+      background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease;
+    }
+    .active, .dot:hover { background-color: #717171; }
+
+    /* Donation QR */
+    .donation-box { text-align: center; }
+    .donation-box img { max-width: 250px; margin: 20px auto; display: block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Icchapurti Hanuman Logo">
+    <h1>Icchapurti Hanuman Foundation</h1>
+    <p>Reviving our ancient heritage through devotion, seva & temple restoration</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#vision">Our Vision</a>
+    <a href="#story">Temple Story</a>
+    <a href="#donation">Donate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slides"><img src="photo1.jpg" alt="Temple Image 1"></div>
+    <div class="slides"><img src="photo2.jpg" alt="Temple Image 2"></div>
+    <div class="slides"><img src="photo3.jpg" alt="Temple Image 3"></div>
+    <div class="slides"><img src="photo4.jpg" alt="Temple Image 4"></div>
+    <div class="slides"><img src="photo5.jpg" alt="Temple Image 5"></div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+  </div>
+  <div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a registered non-profit trust <strong>Icchapurti Hanuman Foundation</strong>, located at Indraiwadi, Post Vadbare, Chandwad, Nashik.</p>
+  </section>
+
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>Currently, our focus is on <strong>Icchapurti Hanuman Mandir at Indraiwadi</strong>, a 500-year-old sacred temple. The renovation cost is <strong>₹20,00,000</strong>.</p>
+  </section>
+
+  <section id="story">
+    <h2>Temple Story</h2>
+    <p>According to the villagers, the Icchapurti Hanuman Mandir is a place where countless devotees have found peace, strength, and the fulfillment of wishes. Legends say that Lord Hanuman himself blessed this site, making it a powerful center of devotion for over five centuries. The temple walls have witnessed generations of prayers, and with renovation, it will continue to bless many more to come.</p>
+  </section>
+
+  <section id="donation">
+    <h2>Donate Now</h2>
+    <div class="donation-box">
+      <p><strong>Trustee Name:</strong> Navnath Madhav Jadhav</p>
+      <p><strong>UPI:</strong> 8275872209</p>
+      <img src="qr.jpg" alt="Donation QR Code">
+      <p>Scan the QR code above to donate easily 🙏</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a></p>
+    <p>Phone: <a href="tel:+918275872209">8275872209</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Icchapurti Hanuman Foundation | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n-1);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slides");
+      let dots = document.getElementsByClassName("dot");
+      if (n === undefined) {slideIndex++;}
+      if (slideIndex >= slides.length) {slideIndex = 0}
+      if (slideIndex < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex].style.display = "block";
+      dots[slideIndex].className += " active";
+      setTimeout(showSlides, 4000);
+    }
+  </script>
+
+</body>
+</html>
