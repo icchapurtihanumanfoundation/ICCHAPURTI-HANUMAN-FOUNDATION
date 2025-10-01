@@ -1,90 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Icchapurti Hanuman Foundation</title>
+  <meta name="description" content="Icchapurti Hanuman Foundation — Renovation & preservation of Icchapurti Hanuman Mandir, Indraiwadi."/>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #fff8f0; color: #333; }
-    header { background: #ff6600; color: white; padding: 20px; text-align: center; }
-    header img { height: 80px; }
-    nav { background: #cc5200; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    .hero { background: url('IMG_20250419_091728088_AE.jpg') center/cover no-repeat; color: white; padding: 100px 20px; text-align: center; }
-    .hero h1 { font-size: 2.5rem; background: rgba(0,0,0,0.6); display: inline-block; padding: 10px 20px; border-radius: 8px; }
-    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
-    section h2 { color: #cc5200; margin-bottom: 20px; text-align: center; }
-    .about, .vision, .donation, .gallery, .contact, .story { margin-bottom: 50px; }
-    .gallery img { width: 48%; margin: 1%; border-radius: 8px; }
-    .donation-box { text-align: center; padding: 20px; border: 2px solid #cc5200; border-radius: 10px; background: #fff3e6; }
-    .donation-box img { width: 200px; margin: 20px 0; }
-    footer { background: #cc5200; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    /* Reset & base */
+    *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#fffdf9;color:#222;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+
+    /* Top bar / header */
+    .topbar{background:#ff5f00;color:#fff;padding:12px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:76px;width:auto;border-radius:8px;background:#fff;padding:6px}
+    .brand h1{margin:0;font-size:1.4rem;letter-spacing:0.4px}
+
+    /* navigation */
+    nav.site-nav{display:flex;justify-content:center;padding:10px 0;background:#cc4b00}
+    nav.site-nav a{color:#fff;margin:0 12px;font-weight:700;display:inline-block;padding:6px 8px;border-radius:6px}
+    nav.site-nav a:hover{background:rgba(255,255,255,0.08)}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center;padding:28px 0}
+    .hero .lead{font-size:1.05rem;line-height:1.6}
+    .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:#ff6f00;color:#fff;padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+    .btn.ghost{background:transparent;border:2px solid #ff6f00;color:#ff6f00}
+
+    /* card for donation & stats */
+    .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.06)}
+
+    /* slideshow */
+    .slideshow{position:relative;border-radius:10px;overflow:hidden}
+    .slides{display:flex;transition:transform .6s cubic-bezier(.22,.9,.35,1)}
+    .slides img{width:100%;height:320px;object-fit:cover;display:block}
+    .slide-dots{display:flex;gap:8px;justify-content:center;padding:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ddd;cursor:pointer}
+    .dot.active{background:#555}
+
+    /* sections */
+    section{padding:28px 0}
+    section h2{color:#cc4b00;margin:0 0 12px;text-align:center}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .thumbnail{border-radius:8px;overflow:hidden}
+    .thumbnail img{width:100%;height:180px;object-fit:cover;display:block}
+
+    footer{background:#222;color:#fff;padding:20px 0;margin-top:22px;text-align:center;font-size:.95rem}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.slides img{height:260px} .grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){nav.site-nav{display:flex;flex-wrap:wrap;gap:6px;padding:8px} .brand img{height:56px} .slides img{height:200px} .grid-3{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header>
-    <img src="Screenshot_20250929-094407.Photos (2).png" alt="Foundation Logo" />
-    <h1>Icchapurti Hanuman Foundation</h1>
-    <p>Reviving our ancient heritage through devotion, seva & temple restoration</p>
-  </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#vision">Our Vision</a>
-    <a href="#story">Temple Story</a>
-    <a href="#project">Project</a>
-    <a href="#donation">Donate</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="hero">
-    <h1>🙏 Join Hands in Renovating Icchapurti Hanuman Mandir 🙏</h1>
+
+  <!-- Header -->
+  <div class="topbar">
+    <div class="container brand">
+      <img src="website logo.png" alt="Icchapurti Hanuman Foundation logo">
+      <div>
+        <h1>Icchapurti Hanuman Foundation</h1>
+        <div style="opacity:.95">Seva • Restoration • Devotion — Indraiwadi, Chandwad, Nashik</div>
+      </div>
+    </div>
   </div>
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>We are a registered non-profit trust <strong>Icchapurti Hanuman Foundation</strong>, located at Indraiwadi, Post Vadbare, Chandwad, Nashik. Our mission is to restore and preserve ancient Hanuman temples, keeping alive the spirit of Sanatan Dharma and devotion for generations to come.</p>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="container" style="display:flex;justify-content:center">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#projects">Projects</a>
+      <a href="#donate">Donate</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero with slideshow + donation panel -->
+  <div class="container hero">
+    <div>
+      <h2 style="color:#222;margin:0 0 10px">Help Restore the Icchapurti Hanuman Mandir</h2>
+      <p class="lead">This sacred temple at Indraiwadi has been a source of faith for generations. We are collecting donations to renovate the temple and preserve our Sanatan cultural heritage. Your contribution — big or small — will bring blessings to many.</p>
+      <div class="cta">
+        <a class="btn" href="#donate">Donate Now</a>
+        <a class="btn ghost" href="#projects">See Project Plan</a>
+      </div>
+
+      <section style="margin-top:18px">
+        <div class="card">
+          <strong>Goal:</strong> ₹20,00,000 &nbsp; • &nbsp; <strong>Collected:</strong> ₹1,30,000<br>
+          <small>Trustee: Navnath Madhav Jadhav • Phone/UPI: 8275872209</small>
+        </div>
+      </section>
+    </div>
+
+    <div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <!-- Slideshow container uses provided images from repo root -->
+        <div class="slideshow" id="slideshow">
+          <div class="slides" id="slides">
+            <img src="temple intrance.jpg" alt="Temple entrance">
+            <img src="hanuman image.jpg" alt="Hanuman idol">
+            <img src="temple outside.jpg" alt="Temple outside">
+            <img src="temple intrance.jpg" alt="Another view">
+          </div>
+        </div>
+        <div class="slide-dots" id="dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About the Foundation</h2>
+    <p style="max-width:900px;margin:10px auto;text-align:center">Icchapurti Hanuman Foundation is a non-profit organization dedicated to renovating and maintaining ancient Hanuman temples. Our current focus is the Icchapurti Hanuman Mandir at Indraiwadi. The restoration includes structural repairs, painting, puja area improvements, and basic amenities for devotees.</p>
   </section>
-  <section id="vision" class="vision">
-    <h2>Our Vision</h2>
-    <p>We are working to renovate and maintain old Hanuman temples. Currently, our focus is on <strong>Icchapurti Hanuman Mandir at Indraiwadi</strong>, a 500-year-old sacred temple. The total cost of renovation is estimated at <strong>₹20,00,000</strong>, out of which only <strong>₹1,30,000</strong> has been collected till date. Your generous donations will help us achieve this divine goal.</p>
-  </section>
-  <section id="story" class="story">
-    <h2>The Divine Story of Icchapurti Hanuman Mandir</h2>
-    <p>According to local tradition, the Icchapurti Hanuman Mandir was established nearly <strong>five centuries ago</strong>. It is said that a wandering saint, blessed with divine vision, discovered a powerful Hanuman idol in the forests of Indraiwadi. With the support of the villagers, a shrine was built at the very spot, which over the years became a sacred center of devotion.</p>
-    <p>The temple earned the name <strong>“Icchapurti Hanuman”</strong> because devotees who prayed here with true faith found their wishes fulfilled. Generations of farmers, families, and travelers have experienced miracles and blessings at this holy place. Every year, thousands of devotees gather during Hanuman Jayanti, when the temple resonates with chants of <em>“Bajrang Bali Ki Jai!”</em>.</p>
-    <p>Unfortunately, due to the passage of time, the temple structure has weakened. The walls and roof require urgent renovation to preserve this priceless heritage. With your support, we can restore the temple to its former glory, ensuring that the legacy of devotion continues for generations to come.</p>
-  </section>
-  <section id="project" class="project">
-    <h2>Ongoing Project</h2>
-    <p>📍 Location: Icchapurti Hanuman Mandir, Indraiwadi (Rajderwadi), Tal. Chandwad, Dist. Nashik</p>
-    <p>✨ Renovation Cost: ₹20,00,000 <br> 💰 Collected So Far: ₹1,30,000</p>
-  </section>
-  <section id="donation" class="donation">
-    <h2>Donate Now</h2>
-    <div class="donation-box">
-      <p><strong>Trustee Name:</strong> Navnath Madhav Jadhav</p>
-      <p><strong>UPI/PhonePe/GooglePay:</strong> 8275872209</p>
-      <img src="qr.jpg" alt="QR Code for Donation" />
-      <p>Scan the QR code to contribute directly 🙏</p>
-      <p>Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a><br> Mobile: <a href="tel:+918275872209">8275872209</a></p>
+
+  <!-- Gallery -->
+  <section id="gallery" class="container">
+    <h2>Gallery — Ongoing Work</h2>
+    <div class="grid-3">
+      <div class="card thumbnail"><a href="temple intrance.jpg" target="_blank"><img src="temple intrance.jpg" alt="Entrance"></a></div>
+      <div class="card thumbnail"><a href="hanuman image.jpg" target="_blank"><img src="hanuman image.jpg" alt="Murti"></a></div>
+      <div class="card thumbnail"><a href="temple outside.jpg" target="_blank"><img src="temple outside.jpg" alt="Outside"></a></div>
     </div>
   </section>
-  <section id="gallery" class="gallery">
-    <h2>Project Gallery</h2>
-    <img src="IMG_20250419_091602332_AE (1).jpg" alt="Temple Entrance" />
-    <img src="IMG_20250419_091612962_AE (1).jpg" alt="Hanuman Idol" />
-    <img src="IMG_20250419_091728088_AE.jpg" alt="Renovation Work" />
-    <img src="IMG_20250419_091732019_AE (1).jpg" alt="Renovation Progress" />
-    <img src="IMG_20250715_202201142_DOC.jpg" alt="Poster" />
+
+  <!-- Projects -->
+  <section id="projects" class="container">
+    <h2>Project Plan</h2>
+    <div class="card" style="padding:18px">
+      <strong>Scope:</strong>
+      <ul>
+        <li>Structural repair and foundation strengthening</li>
+        <li>Plastering, painting and floor work</li>
+        <li>New steps, railing & small assembly area</li>
+        <li>Lighting, water and sanitation facilities</li>
+      </ul>
+      <p><strong>Estimated cost:</strong> ₹20,00,000</p>
+    </div>
   </section>
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a></p>
-    <p>Phone: <a href="tel:+918275872209">8275872209</a></p>
-    <p>Address: Icchapurti Hanuman Foundation, At Indraiwadi, Post Vadbare, Tal. Chandwad, Dist. Nashik</p>
+
+  <!-- Donate -->
+  <section id="donate" class="container">
+    <h2>Donate — Make Seva Easy</h2>
+    <div class="grid-2">
+      <div class="card donation-box" style="text-align:center">
+        <p><strong>Trustee:</strong> Navnath Madhav Jadhav</p>
+        <p><strong>UPI / Phone:</strong> 8275872209</p>
+        <img src="qr.jpg" alt="Donation QR code" style="max-width:300px;border-radius:8px;margin:12px 0;box-shadow:0 8px 20px rgba(0,0,0,0.08)">
+        <p>Scan the QR code using PhonePe / GPay / any UPI app to donate instantly. Thank you for your support 🙏</p>
+      </div>
+      <div class="card">
+        <h3>Other Ways to Help</h3>
+        <ul>
+          <li>Share the website on WhatsApp, Facebook and Instagram</li>
+          <li>Volunteer for local seva days at the temple</li>
+          <li>Contact us to organize a community fundraising event</li>
+        </ul>
+        <p style="margin-top:6px">Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a></p>
+      </div>
+    </div>
   </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p><strong>Address:</strong><br>Indraiwadi, Post Vadbare, Chandwad, Nashik</p>
+        <p><strong>Phone:</strong> <a href="tel:+918275872209">8275872209</a></p>
+        <p><strong>Email:</strong> <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a></p>
+      </div>
+      <div class="card">
+        <h3>Follow & Share</h3>
+        <p>Create Instagram & Facebook pages and link them here to reach more donors. Use the QR poster during local events to collect donations.</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Icchapurti Hanuman Foundation | All Rights Reserved</p>
+    <div class="container">
+      © 2025 Icchapurti Hanuman Foundation — All Rights Reserved • Designed for community seva
+    </div>
   </footer>
+
+<script>
+// Simple responsive slideshow logic
+const slidesEl = document.getElementById('slides');
+const slidesCount = slidesEl ? slidesEl.children.length : 0;
+const dotsEl = document.getElementById('dots');
+
+if (slidesCount > 0) {
+  // build dots
+  for (let i=0;i<slidesCount;i++){
+    const d = document.createElement('div');
+    d.className='dot';
+    d.onclick = ()=>showSlide(i);
+    dotsEl.appendChild(d);
+  }
+  let current = 0;
+  function showSlide(i){
+    current = i;
+    const width = slidesEl.clientWidth;
+    slidesEl.style.transform = `translateX(-${i*100}%)`;
+    const dots = dotsEl.children;
+    for (let k=0;k<dots.length;k++){dots[k].classList.toggle('active',k===i)}
+  }
+  function next(){
+    current = (current+1)%slidesCount;
+    showSlide(current);
+  }
+  // auto play
+  showSlide(0);
+  setInterval(next,4000);
+}
+</script>
+
 </body>
 </html>
