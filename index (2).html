@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Icchapurti Hanuman Foundation</title>
+  <style>
+    :root{--accent:#ff6600;--dark:#cc5200}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff8f0;color:#222;line-height:1.5}
+    header{background:var(--accent);color:#fff;padding:14px 12px;text-align:center;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+    header img{height:80px;object-fit:contain;border-radius:8px;background:#fff;padding:6px}
+    header h1{margin:0;font-size:1.6rem}
+    nav{background:var(--dark);padding:8px;text-align:center}
+    nav a{color:#fff;text-decoration:none;margin:0 12px;font-weight:700}
+    .container{max-width:1000px;margin:24px auto;padding:0 16px}
+    h2{color:var(--dark);text-align:center;margin-bottom:12px}
+    p.lead{text-align:center;margin-top:6px}
+    /* slideshow */
+    .slideshow{max-width:1000px;margin:0 auto 18px;position:relative}
+    .slide{display:none}
+    .slide img{width:100%;height:auto;border-radius:10px;display:block;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+    .nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);color:#fff;border:none;padding:10px 14px;font-size:20px;cursor:pointer;border-radius:6px}
+    .nav-btn.left{left:10px}
+    .nav-btn.right{right:10px}
+    .dots{text-align:center;margin-top:8px}
+    .dot{display:inline-block;width:12px;height:12px;margin:0 4px;background:#bbb;border-radius:50%;cursor:pointer}
+    .dot.active{background:#444}
+    /* sections */
+    section{padding:18px 0;border-top:1px solid rgba(0,0,0,0.04)}
+    .flex{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+    .card{flex:1 1 280px;background:#fff;padding:12px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+    .donation-box{text-align:center}
+    .donation-box img{max-width:260px;width:100%;height:auto;border-radius:8px;display:inline-block}
+    footer{background:var(--dark);color:#fff;text-align:center;padding:14px;margin-top:22px}
+    @media (max-width:600px){header img{height:60px} header h1{font-size:1.1rem} .nav-btn{padding:8px;font-size:18px}}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="website logo.png" alt="Icchapurti Hanuman Foundation logo">
+    <div>
+      <h1>Icchapurti Hanuman Foundation</h1>
+      <div class="lead">Reviving our ancient heritage — Seva • Restoration • Devotion</div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Photos & Videos</a>
+    <a href="#donate">Donate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="slideshow">
+    <div class="slide"><img src="temple intrance.jpg" alt="Temple entrance"></div>
+    <div class="slide"><img src="hanuman image.jpg" alt="Hanuman idol"></div>
+    <div class="slide"><img src="temple outside.jpg" alt="Temple outside view"></div>
+    <div class="slide"><img src="temple intrance.jpg" alt="Another temple view"></div>
+
+    <button class="nav-btn left" onclick="changeSlide(-1)" aria-label="Previous">❮</button>
+    <button class="nav-btn right" onclick="changeSlide(1)" aria-label="Next">❯</button>
+  </div>
+  <div class="dots" id="dots"></div>
+
+  <div class="container">
+    <section id="about">
+      <h2>About Icchapurti Hanuman Foundation</h2>
+      <p>We are a non-profit community trust working to renovate and protect the ancient Icchapurti Hanuman Mandir at Indraiwadi, Post Vadbare, Chandwad, Nashik. This temple has been a source of faith and blessings for generations. The renovation helps preserve our cultural and spiritual heritage.</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Photos & Videos — Ongoing Project</h2>
+      <div class="flex">
+        <div class="card">
+          <h3>Recent Photos</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px">
+            <a href="temple intrance.jpg" target="_blank"><img src="temple intrance.jpg" style="width:100%;border-radius:6px"></a>
+            <a href="hanuman image.jpg" target="_blank"><img src="hanuman image.jpg" style="width:100%;border-radius:6px"></a>
+            <a href="temple outside.jpg" target="_blank"><img src="temple outside.jpg" style="width:100%;border-radius:6px"></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Videos</h3>
+          <p>Upload videos (MP4) into this repository and replace below with actual file names:</p>
+          <pre>&lt;video controls src="site-update.mp4" style="width:100%"&gt;&lt;/video&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate">
+      <h2>Donate — Make Seva Easy</h2>
+      <div class="donation-box card">
+        <p><strong>Trustee:</strong> Navnath Madhav Jadhav</p>
+        <p><strong>UPI / Phone:</strong> 8275872209</p>
+        <img src="qr.jpg" alt="Donation QR Code">
+        <p>Scan the QR code above with PhonePe/GPay/UPI to donate instantly. Thank you for your support 🙏</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="flex">
+        <div class="card">
+          <p><strong>Address:</strong><br>Indraiwadi, Post Vadbare, Chandwad, Nashik</p>
+          <p><strong>Email:</strong> <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+918275872209">8275872209</a></p>
+        </div>
+        <div class="card">
+          <h3>Project Goal</h3>
+          <p>Estimated renovation cost: <strong>₹20,00,000</strong><br>Collected so far: <strong>₹1,30,000</strong></p>
+          <p>Please share this page with friends and relatives to help complete the restoration.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2025 Icchapurti Hanuman Foundation — All Rights Reserved</footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+    let index = 0;
+    function buildDots(){for(let i=0;i<slides.length;i++){const d=document.createElement('span');d.className='dot';d.onclick=()=>showSlide(i);dotsContainer.appendChild(d);}}
+    function showSlide(i){index=i;slides.forEach(s=>s.style.display='none');document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));slides[index].style.display='block';document.querySelectorAll('.dot')[index].classList.add('active');}
+    function changeSlide(step){index+=step;if(index>=slides.length)index=0;if(index<0)index=slides.length-1;showSlide(index);}
+    function autoPlay(){index++;if(index>=slides.length)index=0;showSlide(index);}
+    if(slides.length>0){buildDots();showSlide(0);setInterval(autoPlay,4000);}
+  </script>
+</body>
+</html>
