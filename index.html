@@ -13,16 +13,13 @@
   nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:700}
   .container{max-width:1100px;margin:0 auto;padding:18px}
   .card{background:#fff;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-bottom:16px}
-  .donation-list button{display:block;width:100%;margin:8px 0;padding:10px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
-  form input,form textarea,form select{width:100%;padding:8px;margin:6px 0;border-radius:6px;border:1px solid #ddd;box-sizing:border-box}
-  form button{background:#cc5200;color:#fff;padding:10px;border:none;border-radius:6px;cursor:pointer}
+  .donation-list button,button.donate{display:block;width:100%;margin:8px 0;padding:12px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
   .gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px}
   footer{background:#222;color:#fff;text-align:center;padding:12px;margin-top:18px}
-  .row{display:flex;gap:12px;flex-wrap:wrap}
-  .col{flex:1;min-width:220px}
   .small{font-size:0.9rem;color:#555}
-  .qr{max-width:260px;display:block;margin:8px auto}
+  .qr{max-width:260px;display:block;margin:10px auto;border-radius:8px}
+  .btn-wa{display:inline-block;margin-top:10px;background:#25D366;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700}
 </style>
 </head>
 <body>
@@ -35,6 +32,7 @@
 </header>
 <nav>
   <a href="#about">About</a>
+  <a href="#history">Temple History</a>
   <a href="#donate">Donate</a>
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
@@ -43,64 +41,35 @@
 
 <div class="container">
   <div id="about" class="card">
-    <h2>About</h2>
-    <p>We are renovating the sacred <strong>Icchapurti Hanuman Mandir</strong> at Indraiwadi, Chandwad, Nashik.
-    Project cost <strong>₹20,00,000</strong> — Collected so far <strong>₹1,30,000</strong>.</p>
+    <h2>About the Project</h2>
+    <p>The Icchapurti Hanuman Foundation is dedicated to restoring the ancient <strong>Icchapurti Hanuman Mandir</strong> at Indraiwadi, Chandwad, Nashik. 
+    The estimated project cost is <strong>₹20,00,000</strong>. Till date, we have collected <strong>₹1,30,000</strong>. Your support will help preserve our Sanatan Dharma and heritage for future generations.</p>
+  </div>
+
+  <div id="history" class="card">
+    <h2>Temple History</h2>
+    <p>The Icchapurti Hanuman Mandir is believed to be over <strong>500 years old</strong>. Local legends say that Lord Hanuman himself blessed this site, granting peace, protection, and wish-fulfillment to devotees. 
+    For centuries, villagers and pilgrims have prayed here and experienced divine blessings. The temple walls have seen generations of faith, devotion, and seva. 
+    Today, the structure requires urgent renovation to safeguard this sacred space and continue the spiritual tradition for many more centuries.</p>
   </div>
 
   <div id="donate" class="card">
-    <h2>Quick Donations</h2>
-    <div class="row">
-      <div class="col">
-        <div class="small">Choose a ready package — tap to open your UPI app on mobile</div>
-        <button class="donation-list" onclick="payUPI(500,'Bricks')">Donate Bricks — ₹500</button>
-        <button class="donation-list" onclick="payUPI(350,'Cement')">Donate Cement — ₹350</button>
-        <button class="donation-list" onclick="payUPI(500,'Plant')">Donate Plant — ₹500</button>
-        <button class="donation-list" onclick="payUPI(5000,'Paint/Colour')">Donate Paint/Colour — ₹5000</button>
-      </div>
-      <div class="col">
-        <p class="small"><strong>UPI / Phone:</strong> 8275872209</p>
-        <img src="qr.jpg" alt="QR code" class="qr">
-        <p class="small">Scan the QR with PhonePe / Google Pay / Paytm to donate quickly.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Donor Form</h2>
-    <p class="small">Submit your details — this form will email the parish. To store responses in Google Sheets, follow instructions below (I can set this up if you share the Google Form link).</p>
-    <!-- Primary form: mailto fallback (works immediately). Replace action with your Google Forms POST URL when ready. -->
-    <form id="donorForm" action="mailto:icchapurtihanumanfoundation@gmail.com" method="post" enctype="text/plain" onsubmit="return onSubmitForm(event)">
-      <input id="name" name="Name" placeholder="Full Name" required>
-      <textarea id="address" name="Address" placeholder="Address"></textarea>
-      <input id="mobile" name="Mobile" placeholder="Mobile" required>
-      <label class="small">Select donation item</label>
-      <select id="item" name="Item">
-        <option value="Bricks">Bricks — ₹500</option>
-        <option value="Cement">Cement — ₹350</option>
-        <option value="Plant">Plant — ₹500</option>
-        <option value="Paint">Paint/Colour — ₹5000</option>
-        <option value="Custom">Custom</option>
-      </select>
-      <input id="amount" name="Amount" placeholder="Donation Amount (enter number)" required>
-      <label class="small">Payment method</label>
-      <select id="method" name="Method">
-        <option>UPI</option>
-        <option>Bank Transfer</option>
-        <option>Other</option>
-      </select>
-      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-        <button type="submit">Send Donation Details (Email)</button>
-        <button type="button" onclick="openGoogleForm()">Open Google Form (if connected)</button>
-      </div>
-    </form>
-    <p class="small" style="margin-top:8px"><strong>How to connect Google Forms:</strong> Create a Google Form with fields (Name, Address, Mobile, Item, Amount, Method). Get the form's <code>viewform</code> URL and paste it into the variable `googleFormViewUrl` inside the HTML (or tell me and I will insert it). When connected, the "Open Google Form" button will open that form and users submit there (responses go to Google Sheets).</p>
+    <h2>Donate Now</h2>
+    <p class="small">Click a button below to donate instantly via UPI apps (PhonePe, Google Pay, Paytm).</p>
+    <button class="donate" onclick="payUPI(500,'Bricks')">Donate Bricks — ₹500</button>
+    <button class="donate" onclick="payUPI(350,'Cement')">Donate Cement — ₹350</button>
+    <button class="donate" onclick="payUPI(500,'Plant')">Donate Plant — ₹500</button>
+    <button class="donate" onclick="payUPI(5000,'Paint/Colour')">Donate Paint/Colour — ₹5000</button>
+    <p class="small"><strong>Or scan QR:</strong></p>
+    <img src="qr.jpg" alt="QR code" class="qr">
+    <p class="small">After completing your payment, kindly share your payment screenshot with us on WhatsApp for confirmation.</p>
+    <a href="https://wa.me/918275872209" target="_blank" class="btn-wa">📲 Share on WhatsApp</a>
   </div>
 
   <div id="gallery" class="card">
     <h2>Gallery</h2>
     <div class="gallery">
-      <a href="temple intrance.jpg" target="_blank"><img src="temple intrance.jpg" alt="temple intrance"></a>
+      <a href="temple intrance.jpg" target="_blank"><img src="temple intrance.jpg" alt="temple entrance"></a>
       <a href="hanuman image.jpg" target="_blank"><img src="hanuman image.jpg" alt="hanuman statue"></a>
       <a href="temple outside.jpg" target="_blank"><img src="temple outside.jpg" alt="temple outside"></a>
     </div>
@@ -116,7 +85,9 @@
 
   <div id="contact" class="card">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a><br>Phone: <a href="tel:+918275872209">8275872209</a><br>Address: Indraiwadi, Chandwad, Nashik</p>
+    <p>Email: <a href="mailto:icchapurtihanumanfoundation@gmail.com">icchapurtihanumanfoundation@gmail.com</a><br>
+       Phone: <a href="tel:+918275872209">8275872209</a><br>
+       Address: Indraiwadi, Chandwad, Nashik</p>
     <p>Follow us on Instagram: <a href="https://instagram.com/icch.apurtihanumanfoundation" target="_blank">@icch.apurtihanumanfoundation</a></p>
   </div>
 </div>
@@ -124,41 +95,11 @@
 <footer>© 2025 Icchapurti Hanuman Foundation</footer>
 
 <script>
-// If you create a Google Form, paste the view URL here so the "Open Google Form" button works.
-var googleFormViewUrl = ""; // e.g. "https://docs.google.com/forms/d/e/FORM_ID/viewform"
-
-function openGoogleForm(){
-  if(googleFormViewUrl && googleFormViewUrl.length>5){
-    window.open(googleFormViewUrl, "_blank");
-  } else {
-    alert("Google Form not configured yet. Create a Google Form and paste its view URL into the HTML variable googleFormViewUrl.");
-  }
-}
-
-// UPI payment helper (works on mobile)
 function payUPI(amount,label){
-  // use your UPI id; if your bank/UPI handle differs, update the pa param accordingly
   var upiId = "8275872209@upi";
   var pn = "Icchapurti Hanuman Foundation";
   var upi = 'upi://pay?pa=' + encodeURIComponent(upiId) + '&pn=' + encodeURIComponent(pn) + '&am=' + encodeURIComponent(amount) + '&cu=INR&tn=' + encodeURIComponent(label);
-  // open deep link
   window.location.href = upi;
-}
-
-// Simple handler for mailto submission to format body nicely (keeps existing mailto action)
-function onSubmitForm(e){
-  // Build email body for mailto when user clicks submit
-  var name = document.getElementById('name').value;
-  var address = document.getElementById('address').value;
-  var mobile = document.getElementById('mobile').value;
-  var item = document.getElementById('item').value;
-  var amount = document.getElementById('amount').value;
-  var method = document.getElementById('method').value;
-  var body = 'Name: ' + name + '\nAddress: ' + address + '\nMobile: ' + mobile + '\nItem: ' + item + '\nAmount: ' + amount + '\nMethod: ' + method;
-  var mail = 'mailto:icchapurtihanumanfoundation@gmail.com?subject=' + encodeURIComponent('Donation from ' + name) + '&body=' + encodeURIComponent(body);
-  window.location.href = mail;
-  e.preventDefault();
-  return false;
 }
 </script>
 
